@@ -1,8 +1,8 @@
 import Button from "./Button";
 import project_data from "./projects";
-export default function ProjectSidebar({changeBtnState,sendBackproj}){
+export default function ProjectSidebar({changeBtnState,sendBackproj,addData,prod}){
     function handleProjectClick(id){
-        const selectedProject= project_data.find((project) => project.id === id);
+        const selectedProject= prod.find((project) => project.id === id);
         sendBackproj(selectedProject)
         console.log(selectedProject)
 

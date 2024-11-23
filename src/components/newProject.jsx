@@ -1,7 +1,7 @@
 import { useRef, useState } from "react"
 import Input from "./input"
 import project_data,{projDeta} from "./projects"
-export default function NewProject({changeBtnState}){
+export default function NewProject({changeBtnState,addData,prod}){
     const [savedData,changeState] = useState()
 
     const title = useRef()
@@ -16,6 +16,10 @@ export default function NewProject({changeBtnState}){
             Due: date.current.value,
             tasks:[]
           };
+
+          addData((prev)=>{
+            return [...prev,updatedData]
+          })
           changeState((prev) => {
             return {
                 ...prev,

@@ -5,6 +5,7 @@ import ProjectDetails from "./components/ProjectDetails";
 import project_data from "./components/projects";
 import { useState } from "react";
 function App() {
+  const [projectData,addProjData] = useState([]);
   const [newProjectSelected,changeProjState] = useState();
   const [projInfo,changeProjId] = useState(null)
   let showData = false
@@ -18,8 +19,8 @@ function App() {
 
   return (
     <main className="h-screen my-8 flex gap-8">
-    <ProjectSidebar changeBtnState={changeProjState} sendBackproj={changeProjId}/>   
-    {newProjectSelected? <NewProject changeBtnState={changeProjState}/>:showData?<ProjectDetails reload={handleRemove} project={projInfo}/> :<NoProjectSelected changeBtnState={changeProjState}/>}
+    <ProjectSidebar changeBtnState={changeProjState} sendBackproj={changeProjId} addData={addProjData} prod = {projectData}/>   
+    {newProjectSelected? <NewProject prod = {projectData} addData={addProjData} changeBtnState={changeProjState}/>:showData?<ProjectDetails prod = {projectData} addData={addProjData} reload={handleRemove} project={projInfo}/> :<NoProjectSelected changeBtnState={changeProjState}/>}
 
  </ main>
   );
